@@ -143,7 +143,7 @@ bash scripts/comprehensive_tests/attack/test_gta_comprehensive.sh
 - 支持并行执行，加速完成。
 - 支持断点续跑（自动保存进度）。
 - 自动生成 ASR 表格与 Markdown 报告。
-- 攻击专用参数可通过额外 CLI 参数传入。
+- 攻击专用参数可直接加在命令后面传进去。
 
 **输出**：结果保存在 `results/{attack}_comprehensive/`，
 最终 ASR 表保存在 `final_results.md`。
