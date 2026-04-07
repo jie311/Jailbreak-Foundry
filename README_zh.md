@@ -4,22 +4,25 @@
 
 **从论文到可运行攻击，用于可复现的基准测试**
 
+<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
+
 将越狱研究论文自动转化为可执行攻击模块，并在统一框架下完成标准化评测，<br>构建随研究前沿持续演进的**活体基准**。
 
 [![Paper](https://img.shields.io/badge/arXiv-2602.24009-b31b1b.svg)](https://arxiv.org/pdf/2602.24009)
-[![GitHub Stars](https://img.shields.io/github/stars/OpenSQZ/Jailbreak-Foundry?style=social)](https://github.com/OpenSQZ/Jailbreak-Foundry/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/OpenSQZ/Jailbreak-Foundry?style=social)](https://github.com/OpenSQZ/Jailbreak-Foundry/network/members)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
-[![每周更新攻击](https://img.shields.io/badge/攻击-每周更新-orange)](attack_update_report/)
-
-<img src="jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
+[![攻击实时更新](https://img.shields.io/badge/攻击-实时更新-orange)](attack_update_report/)
 
 </div>
 
 ---
 
-## 📊 研究结果
+## 概览
+
+**Jailbreak Foundry（JBF）** 解决了一个棘手的问题：越狱技术更新太快，但基准测试太"静态"，总是落后半拍。
+JBF 通过把"论文"自动化转化为"可运行代码"，让基准始终跟得上安全发展形势。
+
+如下展示重要的研究结果。
 
 ### 复现保真度
 
@@ -50,9 +53,8 @@
 
 > 更多分析见 [arXiv 论文](https://arxiv.org/pdf/2602.24009)。
 
----
 
-## ⚡ 核心数据
+### ⚡ 核心数据
 
 | 指标 | 数值 |
 |------|------|
@@ -65,7 +67,7 @@
 
 ---
 
-## 🔍 研究发现：跨模型安全洞察
+### 🔍 研究发现：跨模型安全洞察
 
 在 10 个受测模型上的标准化评测揭示出一些反直觉的结论：
 
@@ -77,13 +79,6 @@
 | **攻击几乎不能跨模型迁移** | 大多数攻击在不同模型间 ASR 跨度 **0%–100%** |
 
 > 完整分析与复现指标见 [arXiv 论文](https://arxiv.org/pdf/2602.24009)。
-
----
-
-## 概览
-
-**Jailbreak Foundry（JBF）** 解决了一个棘手的问题：越狱技术更新太快，但基准测试太"静态"，总是落后半拍。
-JBF 通过把"论文"自动化转化为"可运行代码"，让基准始终跟得上安全发展形势。
 
 ### 痛点
 
@@ -123,7 +118,7 @@ JBF-LIB 共享库定义了稳定的攻击契约，并提供可复用工具：
 
 ### 2. JBF-FORGE：论文到模块的自动转化
 
-JBF-FORGE 多智能体协作，自动实现"论文"转化"代码"的过程。
+JBF-FORGE 多智能体协作，自动实现“论文“转化”代码”的过程。
 
 **智能体分工**：
 
@@ -135,7 +130,7 @@ JBF-FORGE 多智能体协作，自动实现"论文"转化"代码"的过程。
 
 ### 3. JBF-EVAL：标准化评测基准
 
-JBF-EVAL 统一评测框架，它保证"跨攻击、跨模型"结果可公平对比：
+JBF-EVAL 统一评测框架，它保证“跨攻击、跨模型”结果可公平对比：
 
 - **固定数据集**：AdvBench、JailbreakBench、HarmBench。
 - **一致裁判**：使用 GPT-4o 裁判与统一评分细则。
@@ -265,9 +260,9 @@ python agents/run_paper_to_attack.py \
 
 ### 多智能体论文转化
 
-- **自动集成**：JBF-FORGE 平均 28.2 分钟把"论文"转化成"可运行模块"，这个过程不需要人工干预。
+- **自动集成**：JBF-FORGE 平均 28.2 分钟把”论文“转化成“可运行模块”，这个过程不需要人工干预。
 - **高保真**：在 30 种复现攻击上，平均 ASR 偏差为 +0.26pp。偏差分布较对称（16 种 Δ≥0，14 种 Δ<0）。
-- **利用官方仓库**：如果有官方代码可用，复现质量更好，平均 ASR 提升 +19.8pp；提升主要是因为获取了攻击对周边代码的依赖部分（即"脚手架密集型"方法）。
+- **利用官方仓库**：如果有官方代码可用，复现质量更好，平均 ASR 提升 +19.8pp；提升主要是因为获取了攻击对周边代码的依赖部分（即“脚手架密集型”方法）。
 
 ### 可复用实现核心
 
@@ -329,7 +324,7 @@ python tools/attack_selector/attack_selector.py \
 ```
 
 **性能表现**：
-在 JBB（JailbreakBench）评测越狱攻击的标准测试集中，平均只需要尝试 1.7-2.5 次，所有策略成功率均可达到 **93.75%**。GPT-OSS-120B 防御性虽强，但 LLM 引导选择成功率高达 **81.25%**，而 ASR-Sort 排序成功率为 68.75%。
+在 JBB（JailbreakBench）评测越狱攻击的标准测试集中，平均只需要尝试 1.7–2.5 次，所有策略成功率均可达到 **93.75%**。GPT-OSS-120B 防御性虽强，但 LLM 引导选择成功率高达 **81.25%**，而 ASR-Sort 排序成功率为 68.75%。
 
 详见 [Attack Selector Usage](tools/attack_selector/ATTACK_SELECTOR_USAGE.md) 文档和 [Selector Comparison](tools/attack_selector/ATTACK_SELECTOR_COMPARISON.md) 基准结果。
 
@@ -477,17 +472,6 @@ python agents/run_paper_to_attack.py --arxiv_id <PAPER_ID>
 2. 增加提供商配置
 3. 接入 `LLMLiteLLM` 适配器
 
-### 如何提交贡献
-
-1. Fork 本仓库
-2. 创建功能分支（`git checkout -b feature/new-attack`）
-3. 提交你的修改
-4. 发起 Pull Request
-
-我们积极审查 PR——新攻击、防御机制、模型支持和文档改进都欢迎！
-
----
-
 ## 引用
 
 如果你在研究中使用 Jailbreak Foundry，请引用：
@@ -520,16 +504,10 @@ python agents/run_paper_to_attack.py --arxiv_id <PAPER_ID>
 
 用户需自行确保符合法律法规与伦理规范。
 
-更多信息，查看 [arXiv 论文](https://arxiv.org/pdf/2602.24009)
-
----
+更多信息，查看 [arXiv paper](https://arxiv.org/pdf/2602.24009)
 
 ## ⭐ Star 支持
 
-如果 Jailbreak Foundry 对你的研究或工作有帮助，欢迎点一个 Star——它能让更多人发现这个项目，也是对我们持续开发的最大鼓励。
+如果 Jailbreak Foundry 对你的研究或工作有帮助，欢迎点亮 Star ——让更多人发现这个项目，也是对我们持续开发的最大鼓励。
 
-**[→ 在 GitHub 上 Star](https://github.com/OpenSQZ/Jailbreak-Foundry)**
-
----
-
-**更多详情请阅读 [arXiv 论文](https://arxiv.org/pdf/2602.24009)**
+[👉 在 GitHub 上 Star ⭐](https://github.com/OpenSQZ/Jailbreak-Foundry)
