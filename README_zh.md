@@ -280,54 +280,6 @@ python agents/run_paper_to_attack.py \
 
 **可复现结果**：输出结构化产物（配置、成本、trace），便于重复运行与长期追踪。
 
-### 攻击选择器
-
-自适应攻击选择器（Attack Selector）是一个智能攻击排序系统，
-它通过可插拔的选择策略，最大化越狱成功率的同时，尽量减少尝试次数和 API 成本。
-
-**选择策略**：
-
-- **ASR-Sort**：按每个受测模型的历史成功率对攻击排序。
-- **Cost-Aware ASR**：基于 Rank-Centrality 评分，平衡攻击效果与 token 成本。
-- **Thompson Sampling**：Beta-Bernoulli 老虎机算法，根据实时成功/失败情况动态调整。
-- **LLM-Guided**：使用 GPT-4o，结合查询上下文、受测模型和历史数据对攻击排序。
-
-**核心功能**：
-
-- **查询感知选择**：为每个查询和受测模型选择最优攻击顺序。
-- **早停机制**：首次攻击成功即终止，减少不必要的 API 调用。
-- **并行执行**：支持配置攻击和查询的并发数，加快评测速度。
-- **性能追踪**：提供全面指标，包括 Success@K、平均尝试次数、token 成本等。
-
-**使用示例**：
-
-```bash
-# 使用 ASR 排序策略运行攻击选择
-python tools/attack_selector/attack_selector.py \
-  --queries_file tools/attack_selector/samples/jbb_sample_queries.json \
-  --selector asr_sort \
-  --attack_concurrency 3 \
-  --max_attacks 10
-
-# 使用 Thompson Sampling 自定义参数
-python tools/attack_selector/attack_selector.py \
-  --selector ts \
-  --ts_prior_weight 0.25 \
-  --attack_concurrency 2 \
-  --query_concurrency 4
-
-# 使用 GPT-4o 引导 LLM 选择
-python tools/attack_selector/attack_selector.py \
-  --selector llm_select \
-  --llm_select_model gpt-4o \
-  --llm_select_provider openai
-```
-
-**性能表现**：
-在 JBB（JailbreakBench）评测越狱攻击的标准测试集中，平均只需要尝试 1.7–2.5 次，所有策略成功率均可达到 **93.75%**。GPT-OSS-120B 防御性虽强，但 LLM 引导选择成功率高达 **81.25%**，而 ASR-Sort 排序成功率为 68.75%。
-
-详见 [Attack Selector Usage](tools/attack_selector/ATTACK_SELECTOR_USAGE.md) 文档和 [Selector Comparison](tools/attack_selector/ATTACK_SELECTOR_COMPARISON.md) 基准结果。
-
 
 ## 支持的模型
 
