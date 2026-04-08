@@ -270,10 +270,6 @@ See [arXiv paper](https://arxiv.org/pdf/2602.24009) for complete reproduction me
 - **[Agents README](agents/README.md)** - Multi-agent workflow overview
 - **[Paper Preprocessor](agents/utils/README.md)** - PDF to markdown conversion utilities
 
-### Attack Selector
-- **[Attack Selector Usage](tools/attack_selector/ATTACK_SELECTOR_USAGE.md)** - Adaptive attack selection system
-- **[Selector Comparison](tools/attack_selector/ATTACK_SELECTOR_COMPARISON.md)** - Performance benchmarks and policy evaluation
-
 ### Quick Help
 ```bash
 # Show all CLI options

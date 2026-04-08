@@ -63,7 +63,6 @@ JBF 通过把"论文"自动化转化为"可运行代码"，让基准始终跟得
 | 🗂️ 基准覆盖 | **30 种攻击 × 10 个模型 = 320 个评测点** |
 | 🔧 代码量减少 | 攻击专属代码减少 **42%** |
 | 🔁 框架复用率 | **82.5%** 为共享基础设施 |
-| 🏆 攻击选择器成功率 | JBB 基准 **93.75%**，平均 1.7–2.5 次尝试 |
 
 ---
 
@@ -280,7 +279,6 @@ python agents/run_paper_to_attack.py \
 
 **可复现结果**：输出结构化产物（配置、成本、trace），便于重复运行与长期追踪。
 
-
 ## 支持的模型
 
 | 提供方 | 模型 | 配置 |
@@ -332,11 +330,6 @@ JBF 已复现并集成 30 种越狱攻击，覆盖多类机制：
 
 - **[Agents README](agents/README.md)** - 多智能体工作流概览
 - **[Paper Preprocessor](agents/utils/README.md)** - PDF 转 Markdown 工具
-
-### 攻击选择器
-
-- **[Attack Selector Usage](tools/attack_selector/ATTACK_SELECTOR_USAGE.md)** - 自适应攻击选择系统
-- **[Selector Comparison](tools/attack_selector/ATTACK_SELECTOR_COMPARISON.md)** - 性能基准与策略评估
 
 ### 快速帮助
 
