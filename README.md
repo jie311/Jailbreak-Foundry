@@ -1,12 +1,19 @@
+<div align="center">
+
 # Jailbreak Foundry
 
-> **From Papers to Runnable Attacks for Reproducible Benchmarking**
+**From Papers to Runnable Attacks for Reproducible Benchmarking**
+
+<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
 
 A system that translates jailbreak research papers into executable attack modules and evaluates them under a unified harness, enabling living benchmarks that evolve with the research frontier.
 
 [![Paper](https://img.shields.io/badge/arXiv-2602.24009-b31b1b.svg)](https://arxiv.org/pdf/2602.24009)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![攻击实时更新](https://img.shields.io/badge/攻击-实时更新-orange)](attack_update_report/)
+
+</div>
 
 ## Overview
 
@@ -29,7 +36,7 @@ JBF provides an automated multi-agent workflow that:
 
 ## Architecture
 
-![JBF architecture diagram](jbf_architecture.jpg)
+![JBF architecture diagram](images/jbf_architecture.jpg)
 
 JBF consists of three core components:
 
@@ -209,49 +216,6 @@ JBF includes an automated pipeline that continuously monitors and integrates new
 - **Format Sensitivity**: Formal wrappers (66.0% mean ASR) outperform linguistic reframing (39.3%)
 
 **Reproducible Results**: Structured artifacts (configs, costs, traces) enable reruns and longitudinal tracking. 
-
-### Attack Selector
-
-**Adaptive Attack Selection**: Intelligent attack ordering system that maximizes jailbreak success while minimizing attempts and cost through pluggable selection policies.
-
-**Selection Policies**:
-- **ASR-Sort**: Ranks attacks by historical success rate for each victim model
-- **Cost-Aware ASR**: Balances attack effectiveness with token cost using Rank-Centrality scoring
-- **Thompson Sampling**: Beta-Bernoulli bandit algorithm that adapts based on real-time success/failure
-- **LLM-Guided**: Uses GPT-4o to rank attacks based on query context, victim model, and empirical data
-
-**Key Features**:
-- **Query-Aware Selection**: Selects optimal attack sequence per query and victim model
-- **Early Stopping**: Terminates on first successful attack, reducing unnecessary API calls
-- **Parallel Execution**: Configurable attack and query concurrency for faster evaluation
-- **Performance Tracking**: Comprehensive metrics including Success@K, average attempts, token costs
-
-**Example Usage**:
-```bash
-# Run ASR-sorted attack selection on sample queries
-python tools/attack_selector/attack_selector.py \
-    --queries_file tools/attack_selector/samples/jbb_sample_queries.json \
-    --selector asr_sort \
-    --attack_concurrency 3 \
-    --max_attacks 10
-
-# Use Thompson Sampling with custom parameters
-python tools/attack_selector/attack_selector.py \
-    --selector ts \
-    --ts_prior_weight 0.25 \
-    --attack_concurrency 2 \
-    --query_concurrency 4
-
-# LLM-guided selection with GPT-4o
-python tools/attack_selector/attack_selector.py \
-    --selector llm_select \
-    --llm_select_model gpt-4o \
-    --llm_select_provider openai
-```
-
-**Performance**: On JBB queries, all policies achieve 93.75% success rate with 1.7-2.5 average attempts per query. LLM-guided selection achieves 81.25% success on challenging GPT-OSS-120B victim (vs 68.75% for ASR-sort).
-
-See [Attack Selector Usage](tools/attack_selector/ATTACK_SELECTOR_USAGE.md) for detailed documentation and [Selector Comparison](tools/attack_selector/ATTACK_SELECTOR_COMPARISON.md) for benchmark results.
 
 ## Supported Models
 
