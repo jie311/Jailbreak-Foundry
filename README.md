@@ -1,19 +1,23 @@
 <div align="center">
 
+<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
+
 # Jailbreak Foundry
 
 **From Papers to Runnable Attacks for Reproducible Benchmarking**
-
-<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
 
 A system that translates jailbreak research papers into executable attack modules and evaluates them under a unified harness, enabling living benchmarks that evolve with the research frontier.
 
 [![Paper](https://img.shields.io/badge/arXiv-2602.24009-b31b1b.svg)](https://arxiv.org/pdf/2602.24009)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
-[![攻击实时更新](https://img.shields.io/badge/攻击-实时更新-orange)](attack_update_report/)
-
+[![Live ASR Report](https://img.shields.io/badge/Attack-Update-orange)](attack_update_report/)
 </div>
+
+<div align="center">
+    <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</div>
+
 
 ## Overview
 
@@ -76,8 +80,8 @@ Unified evaluation harness for comparable cross-attack and cross-model results:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd jbfoundry
+git clone https://github.com/OpenSQZ/Jailbreak-Foundry
+cd Jailbreak-Foundry
 
 # Install dependencies
 pip install -e .
