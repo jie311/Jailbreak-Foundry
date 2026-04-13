@@ -1,10 +1,10 @@
 <div align="center">
 
+<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
+
 # Jailbreak Foundry
 
 **从论文到可运行攻击，用于可复现的基准测试**
-
-<img src="images/jailbreak-foundry-banner.png" alt="Jailbreak Foundry Banner" width="100%">
 
 将越狱研究论文自动转化为可执行攻击模块，并在统一框架下完成标准化评测，<br>构建随研究前沿持续演进的**活体基准**。
 
@@ -15,7 +15,11 @@
 
 </div>
 
----
+<div align="center">
+    <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</div>
+
+
 
 ## 概览
 
@@ -102,7 +106,7 @@ JBF 由三大核心组件构成：
 - JBF-FORGE：把论文转化为可运行的模块
 - JBF-EVAL：标准化基准测试
 
-![JBF architecture diagram](jbf_architecture.jpg)
+![JBF architecture diagram](images/jbf_architecture.jpg)
 
 ### 1. JBF-LIB：统一框架核心
 
