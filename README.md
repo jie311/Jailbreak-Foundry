@@ -11,7 +11,7 @@ A system that translates jailbreak research papers into executable attack module
 [![Paper](https://img.shields.io/badge/arXiv-2602.24009-b31b1b.svg)](https://arxiv.org/pdf/2602.24009)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
-[![Live ASR Report](https://img.shields.io/badge/Attack-Update-orange)](attack_update_report/)
+[![Live ASR Report](https://img.shields.io/badge/Attack-Biweekly_Update-orange)](attack_update_report/)
 </div>
 
 <div align="center">
